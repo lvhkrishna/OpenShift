@@ -41,7 +41,7 @@ public class Uploads extends HttpServlet {
         is.close();
         os.close();
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
-		//doGet(request, response);
+		doGet(request, response);
     }
   }
  
@@ -49,7 +49,7 @@ public class Uploads extends HttpServlet {
  
     String filePath = request.getRequestURI();
  
-    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/",""));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
