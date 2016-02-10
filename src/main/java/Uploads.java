@@ -41,7 +41,7 @@ public class Uploads extends HttpServlet {
         is.close();
         os.close();
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
-		//doGet(request, response);
+		doGet(request, response);
     }
   }
  
