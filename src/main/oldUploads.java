@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-
-import java.net.URLDecoder;
  
 import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.ServletException;
@@ -46,10 +44,9 @@ public class Uploads extends HttpServlet {
  
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
-    String filePath = request.getRequestURI().substring(request.getContextPath().length());
-	filePath = URLDecoder.decode(filePath, "UTF-8");
+    String filePath = request.getRequestURI();
  
-    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/",""));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
@@ -70,8 +67,7 @@ public class Uploads extends HttpServlet {
   private String getFileName(Part part) {
         for (String cd : part.getHeader("content-disposition").split(";")) {
           if (cd.trim().startsWith("filename")) {
-			String filename = cd.substring(cd.indexOf('=') + 1);
-            return filename.substring(filename.lastIndexOf("\\") + 1).trim().replace("\"", "");
+            return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
           }
         }
         return null;
