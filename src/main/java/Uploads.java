@@ -48,9 +48,10 @@ public class Uploads extends HttpServlet {
  
     String filePath = request.getRequestURI().substring(request.getContextPath().length());
 	filePath = URLDecoder.decode(filePath, "UTF-8");
-	response.sendRedirect("new.jsp?path=" + filepath);
+	HttpSession session = req.getSession(true);
+	session.setAttribute("path", filepath);
  
-    /*File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
@@ -64,9 +65,8 @@ public class Uploads extends HttpServlet {
         output.flush();
     }
  
-    out.println(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
 	input.close();
-    output.close();*/
+    output.close();
   }
  
   private String getFileName(Part part) {
