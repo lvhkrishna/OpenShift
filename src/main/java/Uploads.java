@@ -46,7 +46,7 @@ public class Uploads extends HttpServlet {
  
     String filePath = request.getRequestURI();
  
-    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") ;//+ filePath.replace("/",""));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/",""));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
@@ -67,8 +67,7 @@ public class Uploads extends HttpServlet {
   private String getFileName(Part part) {
         for (String cd : part.getHeader("content-disposition").split(";")) {
           if (cd.trim().startsWith("filename")) {
-            return cd.substring(cd.indexOf('=') + 1).trim()
-                    .replace("\"", "");
+            return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
           }
         }
         return null;
