@@ -7,7 +7,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import java.net.URLDecoder;
-import javax.servlet.http.HttpSession;
  
 import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.ServletException;
@@ -49,8 +48,6 @@ public class Uploads extends HttpServlet {
  
     String filePath = request.getRequestURI().substring(request.getContextPath().length());
 	filePath = URLDecoder.decode(filePath, "UTF-8");
-	HttpSession session = req.getSession(true);
-	session.setAttribute("path", filepath);
  
     File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
     InputStream input = new FileInputStream(file);
