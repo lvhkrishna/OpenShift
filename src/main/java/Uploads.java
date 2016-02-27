@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import java.net.URLDecoder;
+import javax.servlet.http.HttpSession;
  
 import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.ServletException;
