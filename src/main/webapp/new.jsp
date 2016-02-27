@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%
-		String filepath = request.getAttribute("path");
-		out.print(filepath);
+		String fpath = (String)request.getAttribute("path");
+		out.print(fpath);
 	%>
 </body>
