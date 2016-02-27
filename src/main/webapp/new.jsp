@@ -8,8 +8,7 @@
 </head>
 <body>
 	<%
-		request.getSession(false);
-		String filepath = session.getAttribute("path");
+		String filepath = request.getAttribute("path");
 		out.print(filepath);
 	%>
 </body>
