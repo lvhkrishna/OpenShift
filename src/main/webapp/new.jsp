@@ -11,4 +11,5 @@
 		String fpath = (String)request.getAttribute("path");
 		out.print(fpath);
 	%>
+	<img src="<%= fpath %>" />
 </body>
