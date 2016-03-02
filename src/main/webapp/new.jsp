@@ -12,5 +12,5 @@
 		out.print(fpath);
 	%>
 	out.print("<br/>" + "http://imagestorage-projectphase.rhcloud.com<%= fpath %>/webapps/iogs.png");
-	<img src="http://imagestorage-projectphase.rhcloud.com<%= fpath %>/webapps/iogs.png" />
+	<img src="http://imagestorage-projectphase.rhcloud.com<%= fpath %>" />
 </body>
