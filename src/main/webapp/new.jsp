@@ -11,6 +11,7 @@
 		String fpath = (String)request.getAttribute("path");
 		out.print(fpath);
 	%>
-	out.print("<br/>" + "http://imagestorage-projectphase.rhcloud.com<%= fpath %>/webapps/iogs.png");
-	<img src="http://imagestorage-projectphase.rhcloud.com<%= fpath %>" />
+	<br/>
+	<%= fpath %>
+	<img src="<%= fpath %>" />
 </body>
