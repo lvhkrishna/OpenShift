@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import java.io.FileNotFoundException;
 import java.net.URLDecoder;
 import java.security.*;
 import javax.crypto.*;
@@ -119,7 +120,7 @@ public class Uploads extends HttpServlet {
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);  
            
             //inStream = new FileInputStream(rawFile);  
-            outStream = new FileOutputStream(encryptedFile);  
+            outStream = new FileOutputStream(encryptedFile);
             byte[] buffer = new byte[BUFFER_LENGTH];  
             int len;  
             while ((len = inStream.read(buffer, 0, BUFFER_LENGTH)) != -1) {
