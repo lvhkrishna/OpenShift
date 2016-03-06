@@ -14,11 +14,17 @@
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
-	String dbhost = System.getenv("OPENSHIFT_MYSQL_DB_URL");
+	String dbhost = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+	String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	String url = "jdbc:mysql://dbhost:dbport/imagestorage";
 	try
 	{	
 		Class.forName("com.mysql.jdbc.driver");
-		conn = DriverManager.getConnection("jdbc:dbhost");
+		conn = DriverManager.getConnection(url, username, password);
+		if(conn == null)
+			out.print("NULL");
 		stmt = conn.createStatement();
 		String sql = "select * from images";
 		rs = stmt.executeQuery(sql);
