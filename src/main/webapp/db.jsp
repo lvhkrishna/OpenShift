@@ -18,6 +18,7 @@
 	String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	out.print(dbhost + "<br/>" + dbport + "<br/>" + username);
 	String url = "jdbc:mysql://dbhost:dbport/imagestorage";
 	try
 	{	
