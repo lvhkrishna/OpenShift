@@ -59,16 +59,16 @@ public class Uploads extends HttpServlet {
 		String directoryPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
 		String encryptPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
 		Uploads encryptFile = new Uploads("thisismypassword");
-        encryptFile.encrypt(directoryPath, encryptPath); 
+        encryptFile.encrypt(directoryPath, encryptPath, is); 
         //FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
-        byte[] bytes = new byte[BUFFER_LENGTH];
-        int read = 0;
-        while ((read = is.read(bytes, 0, BUFFER_LENGTH)) != -1) {
-            os.write(bytes, 0, read);
-        }
-        os.flush();
+        //byte[] bytes = new byte[BUFFER_LENGTH];
+        //int read = 0;
+        //while ((read = is.read(bytes, 0, BUFFER_LENGTH)) != -1) {
+            //os.write(bytes, 0, read);
+        //}
+        //os.flush();
         is.close();
-        os.close();
+        //os.close();
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
     }
   }
@@ -110,20 +110,21 @@ public class Uploads extends HttpServlet {
         return null;
       }
 
-	private void encrypt(String srcPath, String destPath) {  
+	private void encrypt(String srcPath, String destPath, InputStream instream) {  
 		File rawFile = new File(srcPath);  
-        File encryptedFile = new File(destPath);  
-        InputStream inStream = null;  
+        File encryptedFile = new File(destPath);
+		//InputStream instream = request.getPart(part.getName()).getInputStream();
+        //InputStream inStream = null;  
         OutputStream outStream = null;  
         try {  
             
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);  
            
-            inStream = new FileInputStream(rawFile);  
+            //inStream = new FileInputStream(rawFile);  
             outStream = new FileOutputStream(encryptedFile);  
-            byte[] buffer = new byte[1024];  
+            byte[] buffer = new byte[BUFFER_LENGTH];  
             int len;  
-            while ((len = inStream.read(buffer)) > 0) {  
+            while ((len = inStream.read(buffer, 0, BUFFER_LENGTH)) != -1) {
                 outStream.write(cipher.update(buffer, 0, len));  
                 outStream.flush();  
             }  
