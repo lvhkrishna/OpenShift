@@ -7,6 +7,9 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import java.net.URLDecoder;
+import java.security.*;
+import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
  
 import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.ServletException;
