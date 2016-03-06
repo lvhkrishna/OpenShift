@@ -24,26 +24,6 @@ public class Uploads extends HttpServlet {
  
   private static final long serialVersionUID = 2857847752169838915L;
   int BUFFER_LENGTH = 4096;
-  KeyGenerator keyGenerator = null;  
-  SecretKey secretKey = null;  
-  Cipher cipher = null;  
-  String masterPassword = null;  
-  public Uploads() {}
-  public Uploads(String masterPassword) {  
-		this.masterPassword = masterPassword;  
-        try {  
-             
-            keyGenerator = KeyGenerator.getInstance("Blowfish");              
-            secretKey = new SecretKeySpec(masterPassword.getBytes(), "Blowfish");  
-  
-           
-            cipher = Cipher.getInstance("Blowfish");  
-        } catch (NoSuchPaddingException ex) {  
-            System.out.println(ex);  
-        } catch (NoSuchAlgorithmException ex) {  
-            System.out.println(ex);  
-        }  
-    } 
  
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
@@ -51,13 +31,7 @@ public class Uploads extends HttpServlet {
     for (Part part : request.getParts()) {
         InputStream is = request.getPart(part.getName()).getInputStream();
         String fileName = getFileName(part);
-		String fileToEncrypt = filename;  
-		String encryptedFile = filename;
-		String directoryPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
-		String encryptPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
-		Uploads encryptFile = new Uploads("thisismypassword");
-        encryptFile.encrypt(directoryPath, encryptPath); 
-        //FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
+        FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
         byte[] bytes = new byte[BUFFER_LENGTH];
         int read = 0;
         while ((read = is.read(bytes, 0, BUFFER_LENGTH)) != -1) {
@@ -106,37 +80,4 @@ public class Uploads extends HttpServlet {
         }
         return null;
       }
-
-	private void encrypt(String srcPath, String destPath) {  
-		File rawFile = new File(srcPath);  
-        File encryptedFile = new File(destPath);  
-        InputStream inStream = null;  
-        OutputStream outStream = null;  
-        try {  
-            
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey);  
-           
-            inStream = new FileInputStream(rawFile);  
-            outStream = new FileOutputStream(encryptedFile);  
-            byte[] buffer = new byte[1024];  
-            int len;  
-            while ((len = inStream.read(buffer)) > 0) {  
-                outStream.write(cipher.update(buffer, 0, len));  
-                outStream.flush();  
-            }  
-            outStream.write(cipher.doFinal());  
-            inStream.close();  
-            outStream.close();  
-        } catch (IllegalBlockSizeException ex) {  
-            System.out.println(ex);  
-        } catch (BadPaddingException ex) {  
-            System.out.println(ex);  
-        } catch (InvalidKeyException ex) {  
-            System.out.println(ex);  
-        } catch (FileNotFoundException ex) {  
-            System.out.println(ex);  
-        } catch (IOException ex) {  
-            System.out.println(ex);  
-        }  
-    }
 }
