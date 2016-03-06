@@ -14,15 +14,15 @@
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
-	//String dbhost = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-	//String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-	//String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-	//String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	//out.print(dbhost + "<br/>" + dbport + "<br/>" + username);
-	//String url = "jdbc:mysql://dbhost:dbport/imagestorage";
+	String dbhost = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+	String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	out.print(dbhost + "<br/>" + dbport + "<br/>" + username);
+	String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
 	try
 	{	
-		Properties dbProperties = new Properties();
+		/*Properties dbProperties = new Properties();
         InputStream input = DatabaseUtil.class.getClassLoader().getResourceAsStream(DB_PROPERTIES_FILE);
         dbProperties.load(input);
         String url = "";
@@ -41,7 +41,8 @@
         String username = dbProperties.getProperty(PARAM_USERNAME);
         String password = dbProperties.getProperty(PARAM_PASSWORD);
 
-        Class.forName(driver);
+        Class.forName(driver);*/
+		Class.forName(com.mysql.jdbc.Driver);
 		conn = DriverManager.getConnection(url, username, password);
 		if(conn == null)
 			out.print("NULL");
