@@ -10,4 +10,4 @@ if [ ! -d ${OPENSHIFT_DATA_DIR}uploads ]; then
 fi
 
 # create symlink to uploads directory
-ln -s ${OPENSHIFT_DATA_DIR} ${OPENSHIFT_REPO_DIR}webapps/
+ln -s ${OPENSHIFT_DATA_DIR}uploads ${OPENSHIFT_REPO_DIR}webapps/
