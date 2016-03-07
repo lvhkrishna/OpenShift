@@ -5,9 +5,9 @@
 # up again.
 
 # create the uploads directory if it doesn't exist
-if [ ! -d ${OPENSHIFT_DATA_DIR}uploads ]; then
-    mkdir ${OPENSHIFT_DATA_DIR}uploads
+if [ ! -d ${OPENSHIFT_DATA_DIR}upload ]; then
+    mkdir ${OPENSHIFT_DATA_DIR}upload
 fi
 
 # create symlink to uploads directory
-ln -s ${OPENSHIFT_DATA_DIR}uploads ${OPENSHIFT_REPO_DIR}webapps/
+ln -s ${OPENSHIFT_DATA_DIR}upload ${OPENSHIFT_REPO_DIR}webapps/
