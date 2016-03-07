@@ -68,7 +68,7 @@ public class Uploads extends HttpServlet {
         //os.flush();
         is.close();
         //os.close();
-        out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
+        out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR") + "upload");
     }
   }
  
@@ -81,7 +81,7 @@ public class Uploads extends HttpServlet {
 	//request.setAttribute("path", newfilePath);
 	//request.getRequestDispatcher("/new.jsp").forward(request, response);
  
-    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/","upload/"));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
