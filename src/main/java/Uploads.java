@@ -81,7 +81,7 @@ public class Uploads extends HttpServlet {
 	//request.setAttribute("path", newfilePath);
 	//request.getRequestDispatcher("/new.jsp").forward(request, response);
  
-    File file = new File(System.getenv("OPENSHIFT_REPO_DIR") + filePath.replace("/uploads/","webapps/"));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/","upload/"));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
