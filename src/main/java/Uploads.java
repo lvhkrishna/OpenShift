@@ -55,8 +55,8 @@ public class Uploads extends HttpServlet {
     for (Part part : request.getParts()) {
         InputStream is = request.getPart(part.getName()).getInputStream();
         String fileName = getFileName(part);
-		String directoryPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
-		String encryptPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
+		String directoryPath = System.getenv("OPENSHIFT_DATA_DIR") + "upload/" + fileName;
+		String encryptPath = System.getenv("OPENSHIFT_DATA_DIR") + "upload/"  + fileName;
 		Uploads encryptFile = new Uploads("thisismypassword");
         encryptFile.encrypt(directoryPath, encryptPath, is); 
         //FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
@@ -112,7 +112,6 @@ public class Uploads extends HttpServlet {
 	private void encrypt(String srcPath, String destPath, InputStream inStream) {  
 		File rawFile = new File(srcPath);  
         File encryptedFile = new File(destPath);
-		//InputStream instream = request.getPart(part.getName()).getInputStream();
         //InputStream inStream = null;  
         OutputStream outStream = null;  
         try {  
