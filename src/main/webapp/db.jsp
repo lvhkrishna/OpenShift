@@ -42,7 +42,7 @@
         String password = dbProperties.getProperty(PARAM_PASSWORD);
 
         Class.forName(driver);*/
-		Class.forName(com.mysql.jdbc.Driver);
+		//Class.forName(com.mysql.jdbc.Driver);
 		conn = DriverManager.getConnection(url, username, password);
 		if(conn == null)
 			out.print("NULL");

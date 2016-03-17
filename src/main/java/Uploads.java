@@ -55,8 +55,8 @@ public class Uploads extends HttpServlet {
     for (Part part : request.getParts()) {
         InputStream is = request.getPart(part.getName()).getInputStream();
         String fileName = getFileName(part);
-		String directoryPath = System.getenv("OPENSHIFT_DATA_DIR") + "upload/" + fileName;
-		String encryptPath = System.getenv("OPENSHIFT_DATA_DIR") + "upload/"  + fileName;
+		String directoryPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
+		String encryptPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
 		Uploads encryptFile = new Uploads("thisismypassword");
         encryptFile.encrypt(directoryPath, encryptPath, is); 
         //FileOutputStream os = new FileOutputStream(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
@@ -68,7 +68,7 @@ public class Uploads extends HttpServlet {
         //os.flush();
         is.close();
         //os.close();
-        out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR") + "upload");
+        out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
     }
   }
  
@@ -81,7 +81,7 @@ public class Uploads extends HttpServlet {
 	//request.setAttribute("path", newfilePath);
 	//request.getRequestDispatcher("/new.jsp").forward(request, response);
  
-    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/","upload/"));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
