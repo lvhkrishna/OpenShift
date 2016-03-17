@@ -54,7 +54,7 @@
 			out.print(rs.getString("name"));
 		}
 	}
-	catch(ClassNotFoundException ce){ce.printStackTrace();}
+	//catch(ClassNotFoundException ce){ce.printStackTrace();}
 	catch(SQLException se){se.printStackTrace();}
 	catch(Exception e){e.printStackTrace();}
 	finally
