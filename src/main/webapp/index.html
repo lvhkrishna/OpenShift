@@ -209,7 +209,8 @@ pre {
     pwd = document.getElementById("pwd").value;
     repwd = document.getElementById("repwd").value;
     alert(pwd);
-    if (!(pwd.equals(repwd)))
+    alert(repwd);
+    if (pwd.equals(repwd))
     {
       alert("Passwords do not match");
       return false;
