@@ -206,9 +206,8 @@ pre {
 <script>
   function validate()
   {
-    pwd = document.getElementById("pwd");
-    repwd = document.getElementById("repwd");
-    alert(pwd);
+    pwd = document.getElementById("pwd").value;
+    repwd = document.getElementById("repwd").value;
     if (!(pwd.equals(repwd)))
     {
       alert("Passwords do not match");
