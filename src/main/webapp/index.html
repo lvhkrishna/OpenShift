@@ -210,11 +210,11 @@ pre {
           <hgroup>
             <h1>Welcome to your JBossEWS (Apache/Tomcat) </h1>
           </hgroup>
-          <form action="/uploads" enctype="multipart/form-data" method="post">
-            <input type="file" name="uploadFile" accept="image/*"/>
-            <input type="submit" />
+          <form action="register.jsp" method="post">
+            <input type="text" name="uname" placeholder="Email ID"/>
+            <input type="password" name="pwd" placeholder="Password" />
+            <input type="submit" value="Register" />
           </form>
-          <img src='/upload/agar.png' />
           <a href="upload.html">New File</a>
 
         <footer>
