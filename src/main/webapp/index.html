@@ -211,9 +211,22 @@ pre {
             <h1>Welcome to your JBossEWS (Apache/Tomcat) </h1>
           </hgroup>
           <form action="register.jsp" method="post">
-            <input type="text" name="uname" placeholder="Email ID"/>
-            <input type="password" name="pwd" placeholder="Password" />
-            <input type="submit" value="Register" />
+            <fieldset>
+              <legend>Register</legend>
+              <input type="text" name="uname" placeholder="Email ID"/>
+              <input type="password" name="pwd" placeholder="Password" />
+              <input type="password" name="repwd" placeholder="Retype Password" />
+              <input type="submit" value="Register" />
+            </fieldset>
+          </form>
+          
+          <form action="login.jsp" method="post">
+            <fieldset>
+              <legend>Login</legend>
+              <input type="text" name="user" placeholder="Email ID"/>
+              <input type="password" name="password" placeholder="Password" />
+              <input type="submit" value="Login" />
+            </fieldset>
           </form>
           <a href="upload.html">New File</a>
 
