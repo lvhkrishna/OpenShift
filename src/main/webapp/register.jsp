@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
+<title>Register</title>
 </head>
 <body>
 	<%@ page import = "java.sql.*" %>
@@ -20,7 +20,7 @@
 	String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	out.print(dbhost + "<br/>" + dbport + "<br/>" + username);
+	out.print(name + "<br/>" + pass + "<br/>");
 	String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
 	try
 	{	
@@ -29,8 +29,9 @@
 		if(conn == null)
 			out.print("NULL");
 		stmt = conn.createStatement();
-		String sql = "insert into users values('" + name + "', '" + pass + "')";
+		String sql = "insert into Users values('" + name + "', '" + pass + "')";
 		int i = stmt.executeUpdate(sql);
+		out.print(i);
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
 	catch(SQLException se){se.printStackTrace();}
