@@ -21,7 +21,6 @@
 	String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	out.print(name + "<br/>" + pass + "<br/>");
 	String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
 	try
 	{	
@@ -30,7 +29,7 @@
 		if(conn == null)
 			out.print("NULL");
 		stmt = conn.createStatement();
-		String sql = "select * from Users)";
+		String sql = "select * from Users";
 		rs = stmt.executeQuery(sql);
 		while(rs.next())
 		{
