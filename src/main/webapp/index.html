@@ -208,6 +208,7 @@ pre {
   {
     pwd = document.getElementById("pwd");
     repwd = document.getElementById("repwd");
+    alert(pwd);
     if (!(pwd.equals(repwd)))
     {
       alert("Passwords do not match");
@@ -225,7 +226,7 @@ pre {
           <hgroup>
             <h1>Welcome to your JBossEWS (Apache/Tomcat) </h1>
           </hgroup>
-          <form action="register.jsp" method="post" onsubmit="return validate()">
+          <form action="" method="post" onsubmit="return validate()">
             <fieldset>
               <legend>Register</legend>
               <input type="text" name="uname" placeholder="Email ID"/>
