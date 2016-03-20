@@ -203,6 +203,18 @@ pre {
 
 </style>
 
+<script>
+  function validate()
+  {
+    pwd = document.getElementById("pwd");
+    repwd = document.getElementById("repwd");
+    if (!(pwd.equals(repwd)))
+    {
+      alert("Passwords do not match");
+    }
+  }
+</script>
+
 </head>
 <body>
 
@@ -214,8 +226,8 @@ pre {
             <fieldset>
               <legend>Register</legend>
               <input type="text" name="uname" placeholder="Email ID"/>
-              <input type="password" name="pwd" placeholder="Password" />
-              <input type="password" name="repwd" placeholder="Retype Password" />
+              <input type="password" name="pwd" id="pwd" placeholder="Password" />
+              <input type="password" name="repwd" id="repwd" placeholder="Retype Password" />
               <input type="submit" value="Register" />
             </fieldset>
           </form>
