@@ -11,6 +11,7 @@
 	<%@ page import = "javax.sql.*" %>
 	<%
 
+	int a = 0;
 	String name = request.getParameter("uname");
 	String pass = request.getParameter("pwd");
 	Connection conn = null;
@@ -29,9 +30,22 @@
 		if(conn == null)
 			out.print("NULL");
 		stmt = conn.createStatement();
-		String sql = "insert into Users values('" + name + "', '" + pass + "')";
-		int i = stmt.executeUpdate(sql);
-		out.print(i);
+		rs = stmt.executeQuery("select * from Users");
+		while(rs.next())
+		{
+			String dbname = rs.getString("UserName");
+			String dbpwd = rs.getString("Password");
+			if(dbname.equals(name) && dbpwd.equals(pass))
+			{
+				a = 1;
+				out.print("This EmailID already exists. Login now");
+			}
+		}
+		if(a == 0)
+		{
+			String sql = "insert into Users values('" + name + "', '" + pass + "')";
+			int i = stmt.executeUpdate(sql);
+		}
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
 	catch(SQLException se){se.printStackTrace();}
