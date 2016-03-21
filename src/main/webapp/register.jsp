@@ -35,7 +35,7 @@
 		{
 			String dbname = rs.getString("UserName");
 			String dbpwd = rs.getString("Password");
-			if(dbname.equals(name) && dbpwd.equals(pass))
+			if(dbname.equals(name))
 			{
 				a = 1;
 				out.print("This EmailID already exists. Login now");
