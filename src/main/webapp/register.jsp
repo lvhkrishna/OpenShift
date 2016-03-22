@@ -38,7 +38,7 @@
 			if(dbname.equals(name))
 			{
 				a = 1;
-				out.print("This EmailID already exists. Login now");
+				out.print("This EmailID already exists. <a href='index.html'>Login now</a>");
 			}
 		}
 		if(a == 0)
