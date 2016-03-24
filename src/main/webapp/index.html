@@ -207,12 +207,17 @@ pre {
   function validate()
   {
     email = document.getElementById("mail").value;
-    if (!(email.match(/^[a-zA-z0-9_]+\@[a-z]+\.[a-z]+$/)))
+    if (email == "" || !(email.match(/^[a-zA-z0-9_]+\@[a-z]+\.[a-z]+$/)))
     {
       alert("Invalid email");
       return false;
     }
     pwd = document.getElementById("pwd").value;
+    if (pwd == "")
+    {
+      alert("Password is blank");
+      return false;
+    }
     repwd = document.getElementById("repwd").value;
     if (pwd != repwd)
     {
