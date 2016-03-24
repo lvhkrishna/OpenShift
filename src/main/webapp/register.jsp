@@ -38,13 +38,14 @@
 			if(dbname.equals(name))
 			{
 				a = 1;
-				out.print("This EmailID already exists. <a href='index.html'>Login now</a>");
+				out.print("This EmailID already exists. <a href='index.html'>Go back and Login</a>");
 			}
 		}
 		if(a == 0)
 		{
 			String sql = "insert into Users values('" + name + "', '" + pass + "')";
 			int i = stmt.executeUpdate(sql);
+			out.print("Registered Successfully. <a href='index.html'>Go back and Login</a>")
 		}
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
