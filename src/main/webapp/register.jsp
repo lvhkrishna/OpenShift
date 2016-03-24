@@ -43,7 +43,7 @@
 		}
 		if(a == 0)
 		{
-			String sql = "insert into Users values('" + name + "', '" + pass + "')";
+			String sql = "insert into Users values('','" + name + "', '" + pass + "')";
 			int i = stmt.executeUpdate(sql);
 			out.print("Registered Successfully. <a href='index.html'>Go back and Login</a>")
 		}
