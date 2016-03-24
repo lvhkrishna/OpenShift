@@ -21,7 +21,6 @@
 	String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	out.print(name + "<br/>" + pass + "<br/>");
 	String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
 	try
 	{	
@@ -42,6 +41,7 @@
 				break;
 			}
 		}
+		out.print("Hello");
 		if(a == 0)
 		{
 			String sql = "insert into Users values('', '" + name + "', '" + pass + "')";
