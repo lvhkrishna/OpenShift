@@ -39,11 +39,12 @@
 			{
 				a = 1;
 				out.print("This EmailID already exists. <a href='index.html'>Go back and Login</a>");
+				break;
 			}
 		}
 		if(a == 0)
 		{
-			String sql = "insert into Users(UserName,Password) values('" + name + "', '" + pass + "')";
+			String sql = "insert into Users values('NULL', '" + name + "', '" + pass + "')";
 			int i = stmt.executeUpdate(sql);
 			out.print("Registered Successfully. <a href='index.html'>Go back and Login</a>")
 		}
