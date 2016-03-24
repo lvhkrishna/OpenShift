@@ -41,13 +41,10 @@
 				break;
 			}
 		}
-		out.print("Hello1");
 		if(a == 0)
 		{
 			String sql = "insert into Users(UserName, Password) values('" + name + "', '" + pass + "')";
-			out.print("Hello2");
 			int i = stmt.executeUpdate(sql);
-			out.print("Hello3");
 			out.print("Registered Successfully. <a href='index.html'>Go back and Login</a>");
 		}
 	}
