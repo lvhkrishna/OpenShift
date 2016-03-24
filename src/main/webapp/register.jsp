@@ -41,13 +41,14 @@
 				break;
 			}
 		}
-		out.print("Hello");
+		out.print("Hello1");
 		if(a == 0)
 		{
 			String sql = "insert into Users values('', '" + name + "', '" + pass + "')";
 			int i = stmt.executeUpdate(sql);
 			out.print("Registered Successfully. <a href='index.html'>Go back and Login</a>");
 		}
+		out.print("Hello2");
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
 	catch(SQLException se){se.printStackTrace();}
