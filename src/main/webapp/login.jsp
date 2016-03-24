@@ -43,7 +43,7 @@
 		}
 		if(a == 0)
 		{
-			out.print("Invalid");
+			out.print("Invalid Credentials. <a href='index.html'>Try again or register</a>");
 		}
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
