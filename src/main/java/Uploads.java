@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 
 import java.sql.*;
 import javax.sql.*;
+import java.lang.*;
  
 @WebServlet(name = "uploads",urlPatterns = {"/uploads/*"})
 @MultipartConfig
@@ -77,7 +78,6 @@ public class Uploads extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		String name = (String)session.getAttribute("Loguser");
-		out.print("a" + name + "a <br/>");
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -91,6 +91,17 @@ public class Uploads extends HttpServlet {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, username, password);
 			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery("select * from Users");
+			while(rs.next())
+			{
+				String dname = rs.getString("UserName");
+				if(dname.equals(name))
+				{
+					fileName = fileName.concat(rs.getInt("SNO"));
+				}
+			}
+			out.print(fileName);
 			rs = stmt.executeQuery("select * from Images");
 			while(rs.next())
 			{
@@ -99,13 +110,13 @@ public class Uploads extends HttpServlet {
 				if(dbname.equals(name) && image.equals(fileName))
 				{
 					a = 1;
+					break;
 				}
 			}
 			if(a == 0)
 			{
 				String sql = "insert into Images values('" + name + "', '" + fileName + "')";
 				int i = stmt.executeUpdate(sql);
-				out.print("Registered Successfully. <a href='index.html'>Go back and Login</a>");
 			}
 		}
 		catch(ClassNotFoundException ce){ce.printStackTrace();}
@@ -123,7 +134,7 @@ public class Uploads extends HttpServlet {
 			catch(Exception e){e.printStackTrace();}
 		}
 		
-        out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
+        out.println(fileName + " was successfully uploaded.  <a href='upload.html'>Go back</a>"); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
     }
   }
  
