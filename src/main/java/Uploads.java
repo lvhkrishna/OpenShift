@@ -28,6 +28,7 @@ public class Uploads extends HttpServlet {
  
   private static final long serialVersionUID = 2857847752169838915L;
   int BUFFER_LENGTH = 4096;
+  int a = 0;
   KeyGenerator keyGenerator = null;  
   SecretKey secretKey = null;  
   Cipher cipher = null;  
@@ -68,6 +69,53 @@ public class Uploads extends HttpServlet {
         //os.flush();
         is.close();
         //os.close();
+		//Database Connection
+		
+		name = request.getAttribute("user");
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String dbhost = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+		String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+		String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+		String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+		String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
+		try
+		{	
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, username, password);
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select * from Images");
+			while(rs.next())
+			{
+				String image = rs.getString("ImageName");
+				if(image.equals(fileName))
+				{
+					a = 1;
+				}
+			}
+			if(a == 0)
+			{
+				String sql = "insert into Images values('" + name + "', '" + fileName + "')";
+				int i = stmt.executeUpdate(sql);
+				out.print("Registered Successfully. <a href='index.html'>Go back and Login</a>");
+			}
+		}
+		catch(ClassNotFoundException ce){ce.printStackTrace();}
+		catch(SQLException se){se.printStackTrace();}
+		catch(Exception e){e.printStackTrace();}
+		finally
+		{
+			try
+			{
+				stmt.close();
+				rs.close();
+				conn.close();
+			}
+			catch(SQLException e){e.printStackTrace();}
+			catch(Exception e){e.printStackTrace();}
+		}
+		
         out.println(fileName + " was uploaded to " + System.getenv("OPENSHIFT_DATA_DIR"));
     }
   }

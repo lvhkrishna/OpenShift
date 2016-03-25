@@ -38,6 +38,8 @@
 			if(dbname.equals(name) && dbpwd.equals(pass))
 			{
 				a = 1;
+				request.getSession(true);
+				session.setAttribute("user", name);
 				response.sendRedirect("upload.html");
 			}
 		}
