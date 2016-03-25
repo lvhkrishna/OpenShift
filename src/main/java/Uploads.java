@@ -20,6 +20,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+
+import java.sql.*;
+import javax.sql.*;
  
 @WebServlet(name = "uploads",urlPatterns = {"/uploads/*"})
 @MultipartConfig
@@ -88,8 +91,9 @@ public class Uploads extends HttpServlet {
 			rs = stmt.executeQuery("select * from Images");
 			while(rs.next())
 			{
+				String dbname = rs.getString("UserName");
 				String image = rs.getString("ImageName");
-				if(image.equals(fileName))
+				if(dbname.equals(name) && image.equals(fileName))
 				{
 					a = 1;
 				}
