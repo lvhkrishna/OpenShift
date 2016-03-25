@@ -39,7 +39,7 @@
 			{
 				a = 1;
 				request.getSession(true);
-				session.setAttribute("user", name);
+				session.setAttribute("Loguser", name);
 				response.sendRedirect("upload.html");
 			}
 		}

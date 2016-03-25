@@ -31,7 +31,6 @@ public class Uploads extends HttpServlet {
  
   private static final long serialVersionUID = 2857847752169838915L;
   int BUFFER_LENGTH = 4096;
-  int a = 0;
   KeyGenerator keyGenerator = null;  
   SecretKey secretKey = null;  
   Cipher cipher = null;  
@@ -57,6 +56,7 @@ public class Uploads extends HttpServlet {
  
     PrintWriter out = response.getWriter();
     for (Part part : request.getParts()) {
+		int a = 0;
         InputStream is = request.getPart(part.getName()).getInputStream();
         String fileName = getFileName(part);
 		String directoryPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
@@ -74,7 +74,8 @@ public class Uploads extends HttpServlet {
         //os.close();
 		//Database Connection
 		
-		String name = (String)request.getAttribute("user");
+		String name = (String)request.getAttribute("Loguser");
+		out.print("a" + name + "a<br/>");
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
