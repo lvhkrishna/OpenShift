@@ -96,8 +96,7 @@ public class Uploads extends HttpServlet {
 			while(rs.next())
 			{
 				String dname = rs.getString("UserName");
-				String spl[] = fileName.split(".");
-				out.print(spl[0] + "<br/>" + spl[1] + "<br/>");
+				String spl[] = fileName.split("\\.");
 				if(dname.equals(name))
 				{
 					String sno = rs.getString("SNO");
