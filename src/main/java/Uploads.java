@@ -96,13 +96,14 @@ public class Uploads extends HttpServlet {
 			while(rs.next())
 			{
 				String dname = rs.getString("UserName");
+				String spl[] = fileName.split(".");
 				if(dname.equals(name))
 				{
 					String sno = rs.getString("SNO");
-					fileName = fileName.concat(sno);
+					spl[0] = spl[0].concat(sno);
+					fileName = spl[0].concat(spl[1]);
 				}
 			}
-			out.print(fileName);
 			rs = stmt.executeQuery("select * from Images");
 			while(rs.next())
 			{
