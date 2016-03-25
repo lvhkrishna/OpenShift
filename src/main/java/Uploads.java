@@ -98,7 +98,8 @@ public class Uploads extends HttpServlet {
 				String dname = rs.getString("UserName");
 				if(dname.equals(name))
 				{
-					fileName = fileName.concat(rs.getInt("SNO"));
+					String sno = rs.getString("SNO");
+					fileName = fileName.concat(sno);
 				}
 			}
 			out.print(fileName);
