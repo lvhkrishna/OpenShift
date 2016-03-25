@@ -97,10 +97,12 @@ public class Uploads extends HttpServlet {
 			{
 				String dname = rs.getString("UserName");
 				String spl[] = fileName.split(".");
+				out.print(spl[0] + "<br/>" + spl[1] + "<br/>");
 				if(dname.equals(name))
 				{
 					String sno = rs.getString("SNO");
 					spl[0] = spl[0].concat(sno);
+					out.print(spl[0] + "<br/>");
 					fileName = spl[0].concat(spl[1]);
 				}
 			}
@@ -136,7 +138,7 @@ public class Uploads extends HttpServlet {
 			catch(Exception e){e.printStackTrace();}
 		}
 		
-        out.println(fileName + " was successfully uploaded.  <a href='upload.html'>Go back</a>"); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
+        out.println(fileName + " was successfully uploaded." + "<a href='upload.html'>Go back</a>"); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
     }
   }
  
