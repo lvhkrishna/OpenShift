@@ -76,7 +76,7 @@ public class Uploads extends HttpServlet {
 		//Database Connection
 		
 		HttpSession session = request.getSession(false);
-		String name = session.getAttribute("Loguser");
+		String name = (String)session.getAttribute("Loguser");
 		out.print("a" + name + "a <br/>");
 		Connection conn = null;
 		Statement stmt = null;
