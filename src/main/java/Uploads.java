@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
 
 import java.sql.*;
 import javax.sql.*;
@@ -76,7 +77,7 @@ public class Uploads extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		String name = (String)request.getAttribute("Loguser");
-		out.print("a" + name + "a<br/>");
+		out.print("a" + name + "a <br/>");
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
