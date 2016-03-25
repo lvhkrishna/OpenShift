@@ -101,7 +101,7 @@ public class Uploads extends HttpServlet {
 				{
 					String sno = rs.getString("SNO");
 					spl[0] = spl[0].concat(sno);
-					out.print(spl[0] + "<br/>");
+					spl[0] = spl[0].concat(".");
 					fileName = spl[0].concat(spl[1]);
 				}
 			}
