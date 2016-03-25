@@ -74,7 +74,7 @@ public class Uploads extends HttpServlet {
         //os.close();
 		//Database Connection
 		
-		String name = request.getAttribute("user");
+		String name = (String)request.getAttribute("user");
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
