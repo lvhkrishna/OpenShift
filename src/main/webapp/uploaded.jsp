@@ -46,8 +46,9 @@
 				out.print("<a href='" + path + "'>" + im + "</a>" + "<br/>");
 			}
 		}
-		out.print("</div><br/><br/>");
+		out.print("<br/><br/>");
 		out.print("<a href='upload.html' style='margin-left:45%;background-color:#4CAF50;border:none;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin:4px 2px;cursor:pointer;'>Go back</a>");
+		out.print("</div>");
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
 	catch(SQLException se){se.printStackTrace();}
