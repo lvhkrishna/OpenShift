@@ -109,6 +109,7 @@ public class Uploads extends HttpServlet {
         //os.close();
 		
 			rs = stmt.executeQuery("select * from Images");
+			a = 0;
 			while(rs.next())
 			{
 				String dbname = rs.getString("UserName");
@@ -116,14 +117,14 @@ public class Uploads extends HttpServlet {
 				if(dbname.equals(name) && image.equals(fileName))
 				{
 					a = 1;
-					out.print(dbname + "<br/>" + image);
+					out.println(dbname + image);
 					break;
 				}
 			}
 			if(a == 0)
 			{
 				String sql = "insert into Images values('" + name + "', '" + fileName + "')";
-				System.out.println("Inserted" + "<br/>");
+				out.println("Inserted");
 				int i = stmt.executeUpdate(sql);
 			}
 		}
@@ -142,8 +143,7 @@ public class Uploads extends HttpServlet {
 			catch(Exception e){e.printStackTrace();}
 		}
 		
-        out.println(fileName + " was successfully uploaded."); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
-		out.print("<html><body><a href='upload.html'>Go back</a></body></html>");
+        out.println(fileName + " was successfully uploaded. " + a); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
     }
   }
  
