@@ -57,10 +57,46 @@ public class Uploads extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
     PrintWriter out = response.getWriter();
+	
+	HttpSession session = request.getSession(false);
+	String name = (String)session.getAttribute("Loguser");
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	String dbhost = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+	String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
+	
     for (Part part : request.getParts()) {
 		int a = 0;
         InputStream is = request.getPart(part.getName()).getInputStream();
         String fileName = getFileName(part);
+		
+		try
+		{	
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(url, username, password);
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery("select * from Users");
+			while(rs.next())
+			{
+				String dname = rs.getString("UserName");
+				String spl[] = fileName.split("\\.");
+				if(dname.equals(name))
+				{
+					String sno = rs.getString("SNO");
+					spl[0] = spl[0].concat(sno);
+					spl[0] = spl[0].concat(".");
+					fileName = spl[0].concat(spl[1]);
+					//boolean x = fileName.renameTo(spl[0]);
+					//out.print(x + "<br/>");
+				}
+			}
+			rs.close();
+			
 		String directoryPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
 		String encryptPath = System.getenv("OPENSHIFT_DATA_DIR") + fileName;
 		Uploads encryptFile = new Uploads("thisismypassword");
@@ -76,7 +112,7 @@ public class Uploads extends HttpServlet {
         //os.close();
 		//Database Connection
 		
-		HttpSession session = request.getSession(false);
+		/*HttpSession session = request.getSession(false);
 		String name = (String)session.getAttribute("Loguser");
 		Connection conn = null;
 		Statement stmt = null;
@@ -102,9 +138,11 @@ public class Uploads extends HttpServlet {
 					String sno = rs.getString("SNO");
 					spl[0] = spl[0].concat(sno);
 					spl[0] = spl[0].concat(".");
-					fileName = spl[0].concat(spl[1]);
+					spl[0] = spl[0].concat(spl[1]);
+					boolean x = fileName.renameTo(spl[0]);
+					out.print(x + "<br/>");
 				}
-			}
+			}*/
 			rs = stmt.executeQuery("select * from Images");
 			while(rs.next())
 			{
