@@ -12,6 +12,4 @@
 		out.print(fpath);
 	%>
 	<br/>
-	<%= fpath %>
-	<img src="<%= fpath %>" />
 </body>
