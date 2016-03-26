@@ -164,10 +164,10 @@ public class Uploads extends HttpServlet {
 	filePath = sp[0].concat(sp[1]);
 	
 	//String newfilePath = System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/","");
-	request.setAttribute("path", filePath);
-	request.getRequestDispatcher("/new.jsp").forward(request, response);
+	//request.setAttribute("path", filePath);
+	//request.getRequestDispatcher("/new.jsp").forward(request, response);
  
-    /*File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
+    File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/",""));
     InputStream input = new FileInputStream(file);
  
     response.setContentLength((int) file.length());
@@ -182,7 +182,7 @@ public class Uploads extends HttpServlet {
     }
  
 	input.close();
-    output.close();*/
+    output.close();
   }
  
   private String getFileName(Part part) {
