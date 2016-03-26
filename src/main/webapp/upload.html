@@ -201,6 +201,20 @@ pre {
   font-family: Menlo,Monaco,"Liberation Mono",Consolas,monospace !important;
 }
 
+.button
+{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 </style>
 
 </head>
@@ -208,8 +222,8 @@ pre {
 
 <section class='container'>
           <hgroup>
-            <h1>Welcome to the Cloud Application </h1>
-            <a href="index.html" style="float:right;margin-right:10%"><button>Logout</button></a>
+            <h1>Uploading into the Cloud</h1>
+            <a href="index.html" class="button" style="float:right;margin-right:10%">Logout</a>
           </hgroup>
           <br/><br/>
           <form action="/uploads" enctype="multipart/form-data" method="post">

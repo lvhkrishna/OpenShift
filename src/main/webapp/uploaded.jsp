@@ -46,7 +46,7 @@
 				out.print("<a href='" + path + "'>" + im + "</a>" + "<br/>");
 			}
 		}
-		out.print("</div>");
+		out.print("</div><br/><br/>");
 		out.print("<a href='upload.html' style='margin-left:45%'><button>Go back</button></a>");
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
