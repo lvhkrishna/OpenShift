@@ -29,6 +29,7 @@
 		String sql = "select * from Images";
 		rs = stmt.executeQuery(sql);
 		out.print("<h1 style='margin-left:35%'>Your Images</h1>" + "<br/>");
+		out.print("<div style='text-align:center'>");
 		while(rs.next())
 		{
 			String dbuser = rs.getString("UserName");
@@ -39,6 +40,7 @@
 				out.print("<a href='" + path + "'>" + im + "</a>" + "<br/>");
 			}
 		}
+		out.print("</div>");
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
 	catch(SQLException se){se.printStackTrace();}
