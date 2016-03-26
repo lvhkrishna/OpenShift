@@ -21,7 +21,7 @@
 	out.print(dbhost + "<br/>" + dbport + "<br/>" + username);
 	String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
 	request.getSession(false);
-	String user = (String)request.getAttribute("Loguser");
+	String user = (String)session.getAttribute("Loguser");
 	out.print(user + "<br/>");
 	try
 	{
