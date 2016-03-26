@@ -144,9 +144,10 @@ public class Uploads extends HttpServlet {
 		
         out.println(finame + " was successfully uploaded."); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
 		response.setContentType("text/html");
+		out.println("<br/>");
 		out.println("<html>");
 		out.println("<body>");
-		out.println("<a href='upload.html'>Go back</a>");
+		out.println("<a href='upload.html' style='background-color:#4CAF50;border:none;color:white;padding:15px 32px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin:4px 2px;cursor:pointer;'>Go back</a>");
 		out.println("</body>");
 		out.println("</html>");
     }
