@@ -18,11 +18,9 @@
 	String dbport = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 	String username = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
 	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-	out.print(dbhost + "<br/>" + dbport + "<br/>" + username);
 	String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
 	request.getSession(false);
 	String user = (String)session.getAttribute("Loguser");
-	out.print(user + "<br/>");
 	try
 	{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -30,6 +28,7 @@
 		stmt = conn.createStatement();
 		String sql = "select * from Images";
 		rs = stmt.executeQuery(sql);
+		out.print("<h1 style='margin-left:35%'>Your Images</h1" + "<br/>");
 		while(rs.next())
 		{
 			String dbuser = rs.getString("UserName");
