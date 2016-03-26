@@ -117,16 +117,13 @@ public class Uploads extends HttpServlet {
 				if(dbname.equals(name) && image.equals(fileName))
 				{
 					a = 1;
-					out.println(dbname + image);
 					break;
 				}
 			}
 			if(a == 0)
 			{
 				String sql = "insert into Images values('" + name + "', '" + fileName + "')";
-				out.println(name);
 				int i = stmt.executeUpdate(sql);
-				out.println("Inserted");
 			}
 		}
 		catch(ClassNotFoundException ce){ce.printStackTrace();}
@@ -144,7 +141,7 @@ public class Uploads extends HttpServlet {
 			catch(Exception e){e.printStackTrace();}
 		}
 		
-        out.println(fileName + " was successfully uploaded. " + a); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
+        out.println(fileName + " was successfully uploaded."); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
     }
   }
  
