@@ -47,7 +47,7 @@
 			}
 		}
 		out.print("</div>");
-		out.print("<a href='upload.html'><button>Go back</button></a>");
+		out.print("<a href='upload.html' style='margin-left:45%'><button>Go back</button></a>");
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
 	catch(SQLException se){se.printStackTrace();}
