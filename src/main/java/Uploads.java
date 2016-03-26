@@ -124,6 +124,7 @@ public class Uploads extends HttpServlet {
 			if(a == 0)
 			{
 				String sql = "insert into Images values('" + name + "', '" + fileName + "')";
+				out.println(name);
 				int i = stmt.executeUpdate(sql);
 				out.println("Inserted");
 			}
