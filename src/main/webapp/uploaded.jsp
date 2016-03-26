@@ -40,7 +40,7 @@
 				String path = "http://imagestorage-projectphase.rhcloud.com/uploads/" + im;
 				String spl[] = im.split("\\.");
 				int len = spl[0].length();
-				spl[0] = spl[0].substring(0, len-2);
+				spl[0] = spl[0].substring(0, len-1);
 				spl[0] = spl[0].concat(".");
 				im = spl[0].concat(spl[1]);
 				out.print("<a href='" + path + "'>" + im + "</a>" + "<br/>");
