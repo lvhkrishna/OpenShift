@@ -35,7 +35,7 @@
 			if(dbuser.equals(user))
 			{
 				String im = rs.getString("ImageName");
-				out.print("http://imagestorage-projectphase.rhcloud.com/uploads/" + im);//("<a href='http://imagestorage-projectphase.rhcloud.com/uploads/'" + im + ">" + im + "</a>" + "<br/>");
+				out.print("<a href='http://imagestorage-projectphase.rhcloud.com/uploads/'" + im + ">" + im + "</a>" + "<br/>");
 			}
 		}
 	}
