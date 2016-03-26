@@ -155,9 +155,13 @@ public class Uploads extends HttpServlet {
  
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
-	PrintWriter out = response.getWriter();
     String filePath = request.getRequestURI().substring(request.getContextPath().length());
 	filePath = URLDecoder.decode(filePath, "UTF-8");
+	String sp[] = filePath.split("\\.");
+	int len = sp[0].length();
+	sp[0] = sp[0].substring(0, len-1);
+	sp[0] = sp[0].concat(".");
+	filePath = sp[0].concat(sp[1]);
 	
 	//String newfilePath = System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/","");
 	request.setAttribute("path", filePath);
