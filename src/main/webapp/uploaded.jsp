@@ -20,8 +20,9 @@
 	String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
 	out.print(dbhost + "<br/>" + dbport + "<br/>" + username);
 	String url = "jdbc:mysql://" + dbhost + ":" + dbport + "/imagestorage";
-	request.getSession();
-	String user = request.getAttribute("Loguser");
+	request.getSession(false);
+	String user = (String)request.getAttribute("Loguser");
+	out.print(user + "<br/>");
 	try
 	{
 		Class.forName("com.mysql.jdbc.Driver");
