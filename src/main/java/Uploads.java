@@ -158,9 +158,9 @@ public class Uploads extends HttpServlet {
 	PrintWriter out = response.getWriter();
     String filePath = request.getRequestURI().substring(request.getContextPath().length());
 	filePath = URLDecoder.decode(filePath, "UTF-8");
-	out.print(filePath);
 	
-	//String newfilePath = System.getenv("OPENSHIFT_REPO_DIR") + filePath.replace("/uploads/","/webapps/");
+	String newfilePath = System.getenv("OPENSHIFT_DATA_DIR") + filePath.replace("/uploads/","");
+	out.print(newfilePath);
 	//request.setAttribute("path", newfilePath);
 	//request.getRequestDispatcher("/new.jsp").forward(request, response);
  
