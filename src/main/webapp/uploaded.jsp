@@ -28,7 +28,7 @@
 		stmt = conn.createStatement();
 		String sql = "select * from Images";
 		rs = stmt.executeQuery(sql);
-		out.print("<h1 style='margin-left:35%'>Your Images</h1" + "<br/>");
+		out.print("<h1 style='margin-left:35%'>Your Images</h1>" + "<br/>");
 		while(rs.next())
 		{
 			String dbuser = rs.getString("UserName");

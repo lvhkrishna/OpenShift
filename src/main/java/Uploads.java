@@ -116,12 +116,14 @@ public class Uploads extends HttpServlet {
 				if(dbname.equals(name) && image.equals(fileName))
 				{
 					a = 1;
+					out.print(dbname + "<br/>" + image);
 					break;
 				}
 			}
 			if(a == 0)
 			{
 				String sql = "insert into Images values('" + name + "', '" + fileName + "')";
+				System.out.println("Inserted" + "<br/>");
 				int i = stmt.executeUpdate(sql);
 			}
 		}
