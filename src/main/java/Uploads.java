@@ -58,8 +58,6 @@ public class Uploads extends HttpServlet {
  
     PrintWriter out = response.getWriter();
 	
-	HttpSession session = request.getSession(false);
-	String name = (String)session.getAttribute("Loguser");
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -73,6 +71,8 @@ public class Uploads extends HttpServlet {
 		int a = 0;
         InputStream is = request.getPart(part.getName()).getInputStream();
         String fileName = getFileName(part);
+		HttpSession session = request.getSession(false);
+		String name = (String)session.getAttribute("Loguser");
 		
 		try
 		{	
