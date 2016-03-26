@@ -71,6 +71,7 @@ public class Uploads extends HttpServlet {
 		int a = 0;
         InputStream is = request.getPart(part.getName()).getInputStream();
         String fileName = getFileName(part);
+		String finame = fileName;
 		HttpSession session = request.getSession(false);
 		String name = (String)session.getAttribute("Loguser");
 		
@@ -141,7 +142,7 @@ public class Uploads extends HttpServlet {
 			catch(Exception e){e.printStackTrace();}
 		}
 		
-        out.println(fileName + " was successfully uploaded."); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
+        out.println(finame + " was successfully uploaded."); //to " + System.getenv("OPENSHIFT_DATA_DIR"));
 		response.setContentType("text/html");
 		out.println("<html>");
 		out.println("<body>");
