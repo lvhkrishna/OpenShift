@@ -48,7 +48,9 @@
 			int num = (Math.abs(randomValue.nextInt())%1000) + 1;
 			String sql = "insert into Users(UserName, Password, ID) values('" + name + "', '" + pass + "', '" + num + "')";
 			int i = stmt.executeUpdate(sql);
-			out.print("Registered Successfully.<br/> Your ID '" + num + "' must be remebered. <a href='index.html'>Go back and Login</a>");
+			out.print("Registered Successfully.<br/> Your ID '" + num + "' must be remebered.<br/>");
+			out.print("<a href='https://www.dropbox.com/s/tsxueri6ke5l3mt/DecryptApp.zip?dl=0'>Download Decryption application</a><br/>");
+			out.print("<a href='index.html'>Go back and Login</a>");
 		}
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
