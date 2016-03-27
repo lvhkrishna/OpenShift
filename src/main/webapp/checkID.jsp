@@ -33,7 +33,7 @@
 		while(rs.next())
 		{
 			String dbuser = rs.getString("UserName");
-			String dbid = rs.getString("ID");
+			int dbid = rs.getInt("ID");
 			out.print(dbuser + "<br/>" + user + "<br/>" + uid + "<br/>" + dbid + "<br/>");
 			if(dbuser.equals(user) && uid == dbid)
 			{
