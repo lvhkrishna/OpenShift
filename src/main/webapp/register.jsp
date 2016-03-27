@@ -44,11 +44,12 @@
 		}
 		if(a == 0)
 		{
+			int num;
 			while(x == 0)
 			{
 				y = 0;
 				Random randomValue = new Random();
-				int num = (Math.abs(randomValue.nextInt())%1000) + 1;
+				num = (Math.abs(randomValue.nextInt())%1000) + 1;
 				rs = stmt.executeQuery("select * from Users");
 				while(rs.next())
 				{
