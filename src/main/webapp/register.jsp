@@ -12,7 +12,7 @@
 	<%@ page import = "java.util.*" %>
 	<%
 
-	int a = 0;
+	int a = 0, x = 0, y = 0;
 	String name = request.getParameter("uname");
 	String pass = request.getParameter("pwd");
 	Connection conn = null;
@@ -44,8 +44,22 @@
 		}
 		if(a == 0)
 		{
-			Random randomValue = new Random();
-			int num = (Math.abs(randomValue.nextInt())%1000) + 1;
+			while(x == 0)
+			{
+				y = 0;
+				Random randomValue = new Random();
+				int num = (Math.abs(randomValue.nextInt())%1000) + 1;
+				rs = stmt.executeQuery("select * from Users");
+				while(rs.next())
+				{
+					int userid = rs.getInt("ID");
+					if(num == userid)
+						y = 1;
+				}
+				if(y == 0)
+					x = 1;
+			}
+			
 			String sql = "insert into Users(UserName, Password, ID) values('" + name + "', '" + pass + "', '" + num + "')";
 			int i = stmt.executeUpdate(sql);
 			out.print("Registered Successfully.<br/> Your ID '" + num + "' must be remebered.<br/>");
