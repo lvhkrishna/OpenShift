@@ -44,8 +44,9 @@
 		}
 		if(a == 0)
 		{
-			int num;
-			while(x == 0)
+			x = 0;
+			int num = 0;
+			do
 			{
 				y = 0;
 				Random randomValue = new Random();
@@ -59,7 +60,7 @@
 				}
 				if(y == 0)
 					x = 1;
-			}
+			}while(x == 0);
 			
 			String sql = "insert into Users(UserName, Password, ID) values('" + name + "', '" + pass + "', '" + num + "')";
 			int i = stmt.executeUpdate(sql);
