@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Upload</title>
+  <title>Enter ID</title>
   
 <style>
 
@@ -217,23 +217,35 @@ pre {
 
 </style>
 
+<script>
+    function validate()
+    {
+        idn = document.getElementById("UID").value;
+        if (idn >= 1 && idn <= 1000){}
+        else
+        {
+            alert("Enter an integer between 1 and 1000");
+        }
+    }
+</script>
+
 </head>
 <body>
 
 <section class='container'>
           <hgroup>
-            <h1>Uploading into the Cloud</h1>
-            <a href="index.html" class="button" style="float:right;margin-right:10%">Logout</a>
+            <h1>Enter your Unique ID</h1>
           </hgroup>
           <br/><br/>
-          <form action="/uploads" enctype="multipart/form-data" method="post">
-            <input type="file" name="uploadFile" accept="image/*"/>
-            <input type="submit" />
-          </form>
-          <br/><br/>
-          <!--<img src='/upload/agar.png' />-->
-          <a href="enterID.html">View your uploaded images</a>
-
+          <div style="text-align:center;border:1px solid green;margin-top:10%">
+            <form action="checkID.jsp" enctype="multipart/form-data" method="post" onsubmit="return validate()">
+              <input type="number" id="UID" name="UID" placeholder="Unique ID" />
+              <input type="submit" value="Submit" />
+            </form>
+            <br/><br/>
+            <a href="upload.html" class="button">Go back</a>
+          </div>
+          
         <footer>
           <div class="logo"><a href="https://www.openshift.com/"></a></div>
         </footer>
