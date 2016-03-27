@@ -34,6 +34,7 @@
 		{
 			String dbuser = rs.getString("UserName");
 			String dbid = rs.getString("ID");
+			out.print(dbuser + "<br/>" + user + "<br/>" + uid + "<br/>" + dbid + "<br/>");
 			if(dbuser.equals(user) && uid == dbid)
 			{
 				a = 1;
