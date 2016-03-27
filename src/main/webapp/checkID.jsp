@@ -12,7 +12,7 @@
 	<%
 
 	int a = 0;
-	int uid = request.getParameter("UID");
+	int uid = (Integer)request.getParameter("UID");
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
