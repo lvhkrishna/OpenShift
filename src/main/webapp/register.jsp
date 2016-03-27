@@ -9,6 +9,7 @@
 <body>
 	<%@ page import = "java.sql.*" %>
 	<%@ page import = "javax.sql.*" %>
+	<%@ page import = "java.util.*" %>
 	<%
 
 	int a = 0;
@@ -43,9 +44,11 @@
 		}
 		if(a == 0)
 		{
-			String sql = "insert into Users(UserName, Password) values('" + name + "', '" + pass + "')";
+			Random randomValue = new Random();
+			int num = (Math.abs(randomValue.nextInt())%1000) + 1;
+			String sql = "insert into Users(UserName, Password, ID) values('" + name + "', '" + pass + "', '" + num + "')";
 			int i = stmt.executeUpdate(sql);
-			out.print("Registered Successfully. <a href='index.html'>Go back and Login</a>");
+			out.print("Registered Successfully.<br/> Your ID '" + num + "' must be remebered. <a href='index.html'>Go back and Login</a>");
 		}
 	}
 	catch(ClassNotFoundException ce){ce.printStackTrace();}
